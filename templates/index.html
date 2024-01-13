@@ -1,0 +1,28 @@
+<body style="background-color: aqua;">
+    <h1 align="center"> write your task down</h1>
+
+    <div align="center" style="padding-top: 40px;">
+      <form method="POST"  action="/" >
+        {% csrf_token %}
+       <p>{{form.title}}</p> 
+        <button type="submit" style="width: 190px; height: 20px;">create</button>
+      </form>
+    </div>
+    
+    
+    <div align="center" style="color: rgb(2, 31, 31); width: 300px; text-align: left; padding-left: 550px;" >
+        {% for task in tasks %}
+            <div style="font-size: x-large; background-color: bisque; padding-left: 10px; height:30px ;">{% if task.complete == True %}
+                <strike>{{task}}</strike><br>
+               {% else%}
+                <span>{{task}}</span>
+               {%endif%}
+            </div> 
+                    
+         <a href="{% url 'edit' task.id %}" style="text-decoration: none; background-color: rgb(107, 107, 168); color: rgb(0, 0, 0); font-size:larger;">Edit  </a>
+         <a href="{% url 'delete' task.id %}" style="text-decoration: none; background-color: rgb(201, 80, 80); color: rgb(0, 0, 0); font-size: large;"> Delete</a>
+
+        {% endfor%}
+    </div>
+    
+</body>

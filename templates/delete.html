@@ -1,0 +1,9 @@
+<body style="background-color: aqua;">
+    <h1>are you sure u wanna delete {{task}}</h1>
+    <a href="{% url 'index' %}" style="text-decoration: none; color: black; background-color: rgb(100, 146, 131); font-size: x-large;">cancel</a>
+    <form method="POST" action="">
+        {% csrf_token%}
+        <input type="submit" name="confirm" style="background-color: rgb(131, 81, 81);"> 
+    </form>
+
+</body>
